@@ -1,7 +1,6 @@
-package practice;
+package practice.homework;
 
 import java.util.Arrays;
-import java.util.Random;
 import java.util.Scanner;
 
 public class BaseBallGame {
@@ -11,17 +10,16 @@ public class BaseBallGame {
         System.out.println("      자리와 숫자가 같으면 strike");
         System.out.println("      숫자만 같으면 ball");
         System.out.println("      다 다르면 out");
+        System.out.println("      10번 안에 맞추기");
         System.out.println("=======================================================");
         game();
     }
 
     public static int[] rand() {
-        Random rand = new Random();
-
         int[] computerNum = new int[3];
 
         for (int i = 0; i < computerNum.length; i++) {
-            computerNum[i] = rand.nextInt(9);
+            computerNum[i] = (int) (Math.random() * 9);
             for (int j = 0; j < i; j++) {
                 if (computerNum[i] == computerNum[j]) {
                     i--;
@@ -38,12 +36,13 @@ public class BaseBallGame {
 
             int strike;
             int ball;
+            int count = 1;
 
             int[] userNum = new int[3];
 
 
 
-            while (true) {
+            while (count <= 10) {
                 System.out.print("숫자를 입력하세요: ");
                 for (int i = 0; i < userNum.length; i++) {
                     userNum[i] = sc.nextInt();
@@ -71,16 +70,21 @@ public class BaseBallGame {
                 }
 
                 if (strike == 0 && ball == 0)
-                    System.out.println("입력한 숫자: " + Arrays.toString(userNum) + ", out");
+                    System.out.println("입력한 숫자: " + Arrays.toString(userNum) + ", out" + ", 입력 횟수: " +count);
                 else {
-                    System.out.println("입력한 숫자: " + Arrays.toString(userNum) + ", strike: " + strike + ", ball: " + ball );
+                    System.out.println("입력한 숫자: " + Arrays.toString(userNum) + ", strike: " + strike + ", ball: " + ball + ", 입력 횟수: " +count);
                     System.out.println();
                 }
 
-                if (strike != 3)
-                    continue;
-                else {
+                count++;
+
+                if (strike == 3) {
                     System.out.println("정답입니다.");
+                    break;
+                }
+
+                if (count == 11){
+                    System.out.println("Game Over! 정답은: " + Arrays.toString(computer) + "입니다.");
                     break;
                 }
             }
