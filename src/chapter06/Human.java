@@ -33,7 +33,7 @@ public class Human {
     }
 
     void reduceWeight(int w) {
-        this.weight += weight;
+        this.weight -= weight;
     }
 
 }
