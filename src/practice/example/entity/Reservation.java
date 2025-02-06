@@ -1,8 +1,16 @@
 package practice.example.entity;
 
+import practice.example.entity.base.BaseEntity;
+
 import java.time.LocalDateTime;
 
-public class Reservation {
+public class Reservation extends BaseEntity {
+
+    private static long counter = 0;
+
+    {
+        this.id = ++counter;
+    }
 
     // 예약자
     private User user;
@@ -21,6 +29,8 @@ public class Reservation {
         this.startTime = startTime;
         this.endTime = endTime;
     }
+
+
 
     @Override
     public String toString() {

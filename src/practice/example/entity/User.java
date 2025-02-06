@@ -1,9 +1,19 @@
 package practice.example.entity;
 
+import practice.example.entity.base.BaseEntity;
+
 import java.util.Objects;
 
 
-public class User {
+public class User extends BaseEntity {
+
+    private static long counter = 0;
+
+    {
+        this.id = ++counter;
+    }
+
+
     private String name;
 
     private String phoneNumber;

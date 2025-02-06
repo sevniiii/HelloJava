@@ -1,9 +1,11 @@
 package practice.example.entity;
 
+import practice.example.entity.base.BaseEntity;
+
 import java.util.Objects;
 
-public class Seat {
-    private  long id; // 좌석 번호
+public class Seat extends BaseEntity {
+    private static long counter = 0;
 
     private String description; // 설명
 
